@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://ddktqxt7p60fv"]
+
+[ext_resource type="Texture2D" uid="uid://c1mhm8m0u1ufp" path="res://Assets/Sprites/Enemies/Bruxento/Particle/bruxento_particle.png" id="1_3qfwm"]
+[ext_resource type="Script" path="res://Assets/Scripts/bruxento_particle.gd" id="1_v0nlj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6da2c"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c72p7"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3o2r"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41wj2"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtce1"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c7y6"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xym83"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kahq"]
+atlas = ExtResource("1_3qfwm")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16gaq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6da2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c72p7")
+}],
+"loop": false,
+"name": &"ParticleDestroyed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3o2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41wj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtce1")
+}],
+"loop": false,
+"name": &"ParticleSpawn",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c7y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xym83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kahq")
+}],
+"loop": true,
+"name": &"ParticleSpawned",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rkuc"]
+size = Vector2(5, 2)
+
+[node name="Bruxento_Particle" type="Area2D" node_paths=PackedStringArray("sprite_anime") groups=["bruxento"]]
+collision_layer = 256
+collision_mask = 231
+script = ExtResource("1_v0nlj")
+sprite_anime = NodePath("Particle_Anime_Sprite")
+
+[node name="Particle_Anime_Sprite" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_16gaq")
+animation = &"ParticleSpawned"
+
+[node name="Particle_Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_3rkuc")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Particle_Anime_Sprite" to="." method="_on_particle_anime_sprite_animation_finished"]

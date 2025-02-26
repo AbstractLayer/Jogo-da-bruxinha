@@ -1,0 +1,183 @@
+[gd_scene load_steps=23 format=3 uid="uid://b2ow5fwcnoiob"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/bruxento.gd" id="1_oucbp"]
+[ext_resource type="Texture2D" uid="uid://cqoi7lrf5ea2r" path="res://Assets/Sprites/Enemies/Bruxento/Walk/bruxento_walk_right.png" id="1_pp0mb"]
+[ext_resource type="Texture2D" uid="uid://e1sjnhjld60g" path="res://Assets/Sprites/Enemies/Bruxento/Walk/bruxento_walk_up.png" id="2_ej4xn"]
+[ext_resource type="Script" path="res://Assets/Scripts/bruxento_cajado.gd" id="4_d1jb4"]
+[ext_resource type="Texture2D" uid="uid://bvxy53sggsscu" path="res://Assets/Sprites/Enemies/Bruxento/Cajado/bruxento_cajado.png" id="5_wipx4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i82c"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pra4k"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc5u6"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q07rx"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh0dg"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxmni"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6elxj"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1bsr"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osfyv"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etjm2"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnclq"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6k7v"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42gaa"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkcjb"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txwue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i82c")
+}],
+"loop": true,
+"name": &"IdleLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pra4k")
+}],
+"loop": true,
+"name": &"IdleRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc5u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q07rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh0dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxmni")
+}],
+"loop": true,
+"name": &"WalkLeft",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6elxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1bsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osfyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etjm2")
+}],
+"loop": true,
+"name": &"WalkRight",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnclq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6k7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42gaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkcjb")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on2ij"]
+size = Vector2(11, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkst4"]
+size = Vector2(14, 20)
+
+[node name="Bruxento" type="CharacterBody2D" node_paths=PackedStringArray("bruxento_cajado", "ray_cast", "sprite_anime")]
+z_index = 2
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_oucbp")
+bruxento_cajado = NodePath("Bruxento_Cajado")
+ray_cast = NodePath("Bruxento_RayCast")
+sprite_anime = NodePath("Bruxento_Animate_Sprite")
+
+[node name="Bruxento_Animate_Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_txwue")
+animation = &"IdleLeft"
+
+[node name="Bruxento_Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 8.5)
+shape = SubResource("RectangleShape2D_on2ij")
+
+[node name="Bruxento_Cajado" type="Node2D" parent="." node_paths=PackedStringArray("cajado_sprite", "spawn_particle_position")]
+script = ExtResource("4_d1jb4")
+cajado_sprite = NodePath("Cajado_Sprite")
+spawn_particle_position = NodePath("Spawn_Particle")
+
+[node name="Cajado_Sprite" type="Sprite2D" parent="Bruxento_Cajado"]
+position = Vector2(11, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_wipx4")
+
+[node name="Spawn_Particle" type="Node2D" parent="Bruxento_Cajado"]
+position = Vector2(17, 1)
+
+[node name="Bruxento_RayCast" type="RayCast2D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="HitBox" type="Area2D" parent="." groups=["bruxento"]]
+position = Vector2(0.5, 8.5)
+collision_layer = 4
+collision_mask = 40
+
+[node name="Hitbox Collision" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.5, -8.5)
+shape = SubResource("RectangleShape2D_dkst4")

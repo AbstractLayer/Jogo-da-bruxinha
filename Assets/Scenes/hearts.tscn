@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://khpv1gvho0o4"]
+
+[ext_resource type="Texture2D" uid="uid://snblxlulmyvy" path="res://Assets/Sprites/HUD/Hearts Container/heart.png" id="1_ony3k"]
+[ext_resource type="Script" path="res://Assets/Scripts/hearts.gd" id="1_sw34l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcdv2"]
+bg_color = Color(0.0823529, 0.0705882, 0.168627, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_color = Color(0.223529, 0.192157, 0.458824, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_size = 1
+shadow_offset = Vector2(0, 1.5)
+
+[sub_resource type="Theme" id="Theme_bilhe"]
+Panel/styles/panel = SubResource("StyleBoxFlat_dcdv2")
+
+[node name="Hearts" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sw34l")
+
+[node name="HeartPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 79.0
+offset_bottom = 32.0
+theme = SubResource("Theme_bilhe")
+
+[node name="Hearts_Sprite" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 7.0
+offset_right = 67.0
+offset_bottom = 23.0
+texture = ExtResource("1_ony3k")
+expand_mode = 1
+stretch_mode = 1

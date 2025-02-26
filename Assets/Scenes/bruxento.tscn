@@ -1,0 +1,439 @@
+[gd_scene load_steps=32 format=3 uid="uid://b2ow5fwcnoiob"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/bruxento.gd" id="1_oucbp"]
+[ext_resource type="Texture2D" uid="uid://cqoi7lrf5ea2r" path="res://Assets/Sprites/Enemies/Bruxento/Walk/bruxento_walk_right.png" id="1_pp0mb"]
+[ext_resource type="Shader" path="res://Assets/Shaders/black.gdshader" id="2_7igwl"]
+[ext_resource type="Texture2D" uid="uid://e1sjnhjld60g" path="res://Assets/Sprites/Enemies/Bruxento/Walk/bruxento_walk_up.png" id="2_ej4xn"]
+[ext_resource type="Script" path="res://Assets/Scripts/bruxento_cajado.gd" id="4_d1jb4"]
+[ext_resource type="Texture2D" uid="uid://bvxy53sggsscu" path="res://Assets/Sprites/Enemies/Bruxento/Cajado/bruxento_cajado.png" id="5_wipx4"]
+[ext_resource type="Shader" path="res://Assets/Shaders/hit_flash.gdshader" id="7_ruhgr"]
+[ext_resource type="Texture2D" uid="uid://cxlwow6hy88ig" path="res://Assets/Sprites/Particle/particle.png" id="8_e1375"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8w08"]
+resource_local_to_scene = true
+shader = ExtResource("2_7igwl")
+shader_parameter/hit_opacity = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i82c"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pra4k"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc5u6"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q07rx"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh0dg"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxmni"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6elxj"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1bsr"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osfyv"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etjm2"]
+atlas = ExtResource("1_pp0mb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnclq"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6k7v"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42gaa"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkcjb"]
+atlas = ExtResource("2_ej4xn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_txwue"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0i82c")
+}],
+"loop": true,
+"name": &"IdleLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pra4k")
+}],
+"loop": true,
+"name": &"IdleRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc5u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q07rx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh0dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxmni")
+}],
+"loop": true,
+"name": &"WalkLeft",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6elxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1bsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_osfyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etjm2")
+}],
+"loop": true,
+"name": &"WalkRight",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnclq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6k7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42gaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkcjb")
+}],
+"loop": true,
+"name": &"WalkUp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_on2ij"]
+size = Vector2(11, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkst4"]
+size = Vector2(14, 20)
+
+[sub_resource type="Animation" id="Animation_6w4el"]
+resource_local_to_scene = true
+resource_name = "Death"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bruxento_Animate_Sprite:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bruxento_Animate_Sprite:material:shader")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7igwl")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Particle:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bruxento_Animate_Sprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bruxento_Animate_Sprite:material:resource_local_to_scene")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bruxento_Cajado:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2txbu"]
+resource_local_to_scene = true
+resource_name = "Hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bruxento_Animate_Sprite:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bruxento_Animate_Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bruxento_Animate_Sprite:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_ruhgr")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bruxento_Animate_Sprite:material:resource_local_to_scene")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mgr7m"]
+resource_local_to_scene = true
+resource_name = "Spawn"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bruxento_Animate_Sprite:material:shader_parameter/hit_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.6, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bruxento_Animate_Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bruxento_Animate_Sprite:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_7igwl")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Particle:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bruxento_Animate_Sprite:material:resource_local_to_scene")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bruxento_Cajado:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4srd0"]
+_data = {
+"Death": SubResource("Animation_6w4el"),
+"Hit": SubResource("Animation_2txbu"),
+"Spawn": SubResource("Animation_mgr7m")
+}
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kbpmn"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 28.95
+initial_velocity_max = 30.95
+gravity = Vector3(0, 0, 0)
+
+[node name="Bruxento" type="CharacterBody2D" node_paths=PackedStringArray("bruxento_cajado", "ray_cast", "sprite_anime", "vfx_shader", "is_shooting_timer", "is_knockback_timer")]
+z_index = 2
+collision_layer = 4
+collision_mask = 35
+script = ExtResource("1_oucbp")
+bruxento_cajado = NodePath("Bruxento_Cajado")
+ray_cast = NodePath("Bruxento_RayCast")
+sprite_anime = NodePath("Bruxento_Animate_Sprite")
+vfx_shader = NodePath("Effects")
+is_shooting_timer = NodePath("is_shooting")
+is_knockback_timer = NodePath("is_knockback")
+
+[node name="Bruxento_Animate_Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_h8w08")
+sprite_frames = SubResource("SpriteFrames_txwue")
+animation = &"IdleLeft"
+
+[node name="Bruxento_Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 8.5)
+shape = SubResource("RectangleShape2D_on2ij")
+
+[node name="Bruxento_Cajado" type="Node2D" parent="." node_paths=PackedStringArray("cajado_sprite", "spawn_particle_position", "is_shooting_timer")]
+script = ExtResource("4_d1jb4")
+cajado_sprite = NodePath("Cajado_Sprite")
+spawn_particle_position = NodePath("Spawn_Particle")
+is_shooting_timer = NodePath("../is_shooting")
+
+[node name="Cajado_Sprite" type="Sprite2D" parent="Bruxento_Cajado"]
+position = Vector2(11, 1)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_wipx4")
+
+[node name="Spawn_Particle" type="Node2D" parent="Bruxento_Cajado"]
+position = Vector2(15.5, 1.5)
+
+[node name="Bruxento_RayCast" type="RayCast2D" parent="."]
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="is_shooting" type="Timer" parent="."]
+wait_time = 0.8
+
+[node name="is_knockback" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(0.5, 8.5)
+collision_layer = 4
+collision_mask = 40
+
+[node name="Hitbox Collision" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-0.5, -8.5)
+shape = SubResource("RectangleShape2D_dkst4")
+
+[node name="Effects" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4srd0")
+}
+
+[node name="Particle" type="GPUParticles2D" parent="."]
+position = Vector2(0, 7)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_kbpmn")
+texture = ExtResource("8_e1375")
+
+[connection signal="timeout" from="is_shooting" to="." method="_on_is_shooting_timeout"]
+[connection signal="timeout" from="is_knockback" to="." method="_on_is_knockback_timeout"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="animation_finished" from="Effects" to="." method="_on_effects_animation_finished"]

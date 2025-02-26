@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1mvgq4iusark"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/BruxentoSpawner.gd" id="1_rk0g2"]
+
+[node name="BruxentoSpawner" type="Node2D" node_paths=PackedStringArray("enemy_spawned_timer", "spawn_point")]
+script = ExtResource("1_rk0g2")
+enemy_spawned_timer = NodePath("enemy_spawn_timer")
+spawn_point = NodePath("Spawn_Point")
+
+[node name="enemy_spawn_timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Spawn_Point" type="Marker2D" parent="."]
+
+[connection signal="timeout" from="enemy_spawn_timer" to="." method="_on_enemy_spawn_timer_timeout"]
